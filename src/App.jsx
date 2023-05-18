@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import "./styles/global.css";
 
@@ -13,18 +13,19 @@ function App() {
             { id: Date.now(), sign: "+", value: 0, disabled: false },
         ]);
     };
-
-    //handle the input value
-    const handleValue = (event, rowId) => {
-        const updatedRows = rows.map((row) =>
-            row.id === rowId ? { ...row, value: event.target.value } : row
-        );
-        setRows(updatedRows);
-    };
     //handle the sign for calculation
     const handleSelect = (event, rowId) => {
         const updatedRows = rows.map((row) =>
             row.id === rowId ? { ...row, sign: event.target.value } : row
+        );
+        setRows(updatedRows);
+    };
+    //handle the input value
+    const handleValue = (event, rowId) => {
+        let input =
+            event.target.value === "" ? 0 : parseInt(event.target.value);
+        const updatedRows = rows.map((row) =>
+            row.id === rowId ? { ...row, value: input } : row
         );
         setRows(updatedRows);
     };
@@ -40,18 +41,18 @@ function App() {
         );
         setRows(updatedRows);
     };
-    //calculating total value
+    //calculating total value whenever rows change
     useEffect(() => {
-        let totalValue = 0;
-        rows.forEach((element) => {
-            if (!element.disabled) {
-                totalValue +=
-                    element.sign === "+"
-                        ? parseInt(element.value)
-                        : parseInt(-element.value);
+        rows.reduce((accumulator, row) => {
+            if (!row.disabled) {
+                accumulator +=
+                    row.sign === "+"
+                        ? parseInt(row.value)
+                        : parseInt(-row.value);
+                setTotal(accumulator);
             }
-        });
-        setTotal(totalValue);
+            return accumulator;
+        }, 0);
     }, [rows]);
 
     return (
@@ -73,7 +74,7 @@ function App() {
                             Delete
                         </button>
                         <button onClick={() => handleDisable(row.id)}>
-                            {row.disabled ? "enable" : "disable"}
+                            {row.disabled ? "Enable" : "Disable"}
                         </button>
                     </li>
                 ))}

@@ -43,16 +43,16 @@ function App() {
     };
     //calculating total value whenever rows change
     useEffect(() => {
-        rows.reduce((accumulator, row) => {
+        let newTotal = rows.reduce((accumulator, row) => {
             if (!row.disabled) {
                 accumulator +=
                     row.sign === "+"
                         ? parseInt(row.value)
                         : parseInt(-row.value);
-                setTotal(accumulator);
             }
             return accumulator;
         }, 0);
+        setTotal(newTotal);
     }, [rows]);
 
     return (
@@ -71,6 +71,7 @@ function App() {
                             type="number"
                             placeholder="enter the value"
                             onChange={(e) => handleValue(e, row.id)}
+                            disabled={row.disabled ? true : false}
                         />
                         <button onClick={() => handleDelete(row.id)}>
                             Delete

@@ -57,7 +57,9 @@ function App() {
 
     return (
         <div className="app">
-            <button onClick={addRow}>Add a row</button>
+            <button onClick={addRow} className="add-row-button">
+                Add a row
+            </button>
             <ul>
                 {rows.map((row, index) => (
                     <li key={row.id}>
@@ -79,7 +81,7 @@ function App() {
                     </li>
                 ))}
             </ul>
-            <div>Total:{total}</div>
+            {rows.length > 0 && <h2>Total:{total}</h2>}
         </div>
     );
 }

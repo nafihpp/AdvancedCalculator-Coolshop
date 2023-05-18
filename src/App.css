@@ -1,7 +1,49 @@
+ul {
+    list-style: none;
+    max-height: 300px;
+    overflow: auto;
+}
+
 li {
     margin-bottom: 10px;
     transform: translateY(-10px);
     animation: fadeIn 0.5s ease-in-out forwards;
+}
+.app {
+    padding: 10px 10px;
+    min-width: 24%;
+    border-radius: 4px;
+    background: #fff;
+    min-height: 410px;
+    position: relative;
+}
+.app .add-row-button {
+    padding: 10px;
+    border: none;
+    background: linear-gradient(90deg, #057bff, #022a76);
+    color: #fff;
+    margin-bottom: 20px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+.app ul li select {
+    padding: 2px;
+    font-size: 20px;
+    margin-right: 5px;
+}
+.app ul li input {
+    padding: 9px 17px 4px 10px;
+}
+.app ul li button {
+    padding: 8px;
+    border: none;
+    margin: 0 10px 0 6px;
+    cursor: pointer;
+}
+
+.app h2 {
+    position: absolute;
+    color: #000;
 }
 
 @keyframes fadeIn {

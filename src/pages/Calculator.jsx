@@ -78,6 +78,7 @@ export const Calculator = () => {
                                 <option value="-">-</option>
                             </select>
                             <input
+                                type="number"
                                 placeholder="enter the value"
                                 onChange={(e) => handleValue(e, row.id)}
                                 disabled={row.disabled ? true : false}

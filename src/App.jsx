@@ -23,7 +23,7 @@ function App() {
     //handle the input value
     const handleValue = (event, rowId) => {
         let input =
-            event.target.value === "" ? 0 : parseInt(event.target.value);
+            event.target.value === "" ? 0 : parseFloat(event.target.value);
         const updatedRows = rows.map((row) =>
             row.id === rowId ? { ...row, value: input } : row
         );
@@ -47,8 +47,8 @@ function App() {
             if (!row.disabled) {
                 accumulator +=
                     row.sign === "+"
-                        ? parseInt(row.value)
-                        : parseInt(-row.value);
+                        ? parseFloat(row.value)
+                        : parseFloat(-row.value);
             }
             return accumulator;
         }, 0);
@@ -68,7 +68,6 @@ function App() {
                             <option value="-">-</option>
                         </select>
                         <input
-                            type="number"
                             placeholder="enter the value"
                             onChange={(e) => handleValue(e, row.id)}
                             disabled={row.disabled ? true : false}

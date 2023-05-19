@@ -94,8 +94,8 @@ export const Calculator = () => {
                                 className="disable-button"
                                 style={{
                                     background: row.disabled
-                                        ? "#1baae2"
-                                        : "red",
+                                        ? "green"
+                                        : "#1baae2",
                                 }}
                             >
                                 {row.disabled ? "Enable" : "Disable"}

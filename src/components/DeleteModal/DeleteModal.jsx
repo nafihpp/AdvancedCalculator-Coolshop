@@ -1,6 +1,12 @@
 import "./DeleteModal.css";
 
 export const DeleteModal = ({ handleModal, handleDelete }) => {
+    //handle Delete and Model Unmount
+    const handleDeleteButtonClick = () => {
+        handleDelete();
+        handleModal();
+    };
+
     return (
         <div className="modal-content">
             <h2>Confirm Delete</h2>
@@ -8,10 +14,7 @@ export const DeleteModal = ({ handleModal, handleDelete }) => {
             <div className="button-container">
                 <button
                     className="delete-button"
-                    onClick={() => {
-                        handleDelete();
-                        handleModal();
-                    }}
+                    onClick={handleDeleteButtonClick}
                 >
                     Yes
                 </button>

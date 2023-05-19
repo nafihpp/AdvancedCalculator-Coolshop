@@ -95,7 +95,7 @@ export const Calculator = () => {
                                 style={{
                                     background: row.disabled
                                         ? "green"
-                                        : "#1baae2",
+                                        : "#057bff",
                                 }}
                             >
                                 {row.disabled ? "Enable" : "Disable"}

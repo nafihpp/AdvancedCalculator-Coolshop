@@ -1,5 +1,4 @@
 import { Fragment } from "react";
-import "./App.css";
 import "./styles/global.css";
 import { Calculator } from "./pages";
 

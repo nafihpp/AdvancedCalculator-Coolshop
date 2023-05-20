@@ -4,14 +4,12 @@ import "./Calculator.css";
 export const Calculator = () => {
     const [rows, setRows] = useState([]);
     const [total, setTotal] = useState(0);
-    const inputRef = useRef();
-
-    console.log(inputRef.current, "==ref");
+    const inputRef = useRef({});
 
     //Adding rows
     const addRow = () => {
-        setRows([
-            ...rows,
+        setRows((prevRows) => [
+            ...prevRows,
             { id: Date.now(), sign: "+", value: 0, disabled: false },
         ]);
     };
@@ -57,9 +55,12 @@ export const Calculator = () => {
         setTotal(newTotal);
     }, [rows]);
 
+    //Autofocus on Added input rows
     useEffect(() => {
-        console.log(inputRef.current);
-    }, [addRow]);
+        if (inputRef[rows.length] !== undefined) {
+            inputRef[rows.length].focus();
+        }
+    }, [rows.length]);
 
     return (
         <Fragment>
@@ -78,6 +79,7 @@ export const Calculator = () => {
                                 type="number"
                                 placeholder="enter the value"
                                 onChange={(e) => handleValue(e, row.id)}
+                                ref={(ref) => (inputRef[index + 1] = ref)}
                                 disabled={row.disabled ? true : false}
                             />
                             <button

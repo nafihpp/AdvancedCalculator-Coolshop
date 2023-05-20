@@ -1,6 +1,4 @@
-# coolshop-task
-
-## ReactJs - Calculator
+## coolshop-task -- ReactJs
 
 -  rows can be added and removed.
 -  each row have a sign (minus or plus).

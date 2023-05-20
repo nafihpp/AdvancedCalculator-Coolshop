@@ -18,21 +18,21 @@
 .calculator-cotaniner .add-row-button:hover {
     background: linear-gradient(360deg, #057bff, #022a76);
 }
-.calculator-cotaniner ul {
+.calculator-cotaniner ul.parent-container {
     list-style: none;
     max-height: 300px;
     overflow: auto;
 }
-.calculator-cotaniner ul li {
+.calculator-cotaniner ul.parent-container li {
     margin-bottom: 10px;
     transform: translateY(-10px);
     animation: fadeIn 0.5s ease-in-out forwards;
 }
-.calculator-cotaniner ul li select {
+.calculator-cotaniner ul.parent-container li select {
     margin-right: 5px;
     padding: 4px;
 }
-.calculator-cotaniner ul li input {
+.calculator-cotaniner ul.parent-container li input {
     padding: 4px;
 }
 input[type="number"]::-webkit-inner-spin-button,
@@ -42,22 +42,22 @@ input[type="number"]::-webkit-outer-spin-button {
     appearance: none;
     margin: 0;
 }
-.calculator-cotaniner ul li button {
+.calculator-cotaniner ul.parent-container li button {
     padding: 5px;
     border: none;
     margin: 1px 1px 0 4px;
     cursor: pointer;
     border-radius: 4px;
 }
-.calculator-cotaniner ul li .delete-button {
-    background: red;
+.calculator-cotaniner ul.parent-container li .delete-button {
+    background: rgb(230, 2, 2);
     color: #fff;
 }
-.calculator-cotaniner ul li .delete-button:hover {
-    background: rgb(130, 30, 30);
+.calculator-cotaniner ul.parent-container li .delete-button:hover {
+    background: rgb(212, 4, 4);
     color: #fff;
 }
-.calculator-cotaniner ul li .disable-button {
+.calculator-cotaniner ul.parent-container li .disable-button {
     color: #fff;
 }
 .calculator-cotaniner h2 {

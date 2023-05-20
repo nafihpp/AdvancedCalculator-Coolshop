@@ -5,10 +5,6 @@ export const Calculator = () => {
     const [rows, setRows] = useState([]);
     const [total, setTotal] = useState(0);
 
-    //deleteModal
-    const [deleteModal, setDeleteModal] = useState(false);
-    const [selectedDelete, setSelectedDelete] = useState();
-
     //Adding rows
     const addRow = () => {
         setRows([
@@ -37,10 +33,6 @@ export const Calculator = () => {
         const unDeleted = rows.filter((row) => row.id !== rowId);
         setRows(unDeleted);
     };
-    const handleModal = (rowId) => {
-        setSelectedDelete(rowId);
-        setDeleteModal(!deleteModal);
-    };
     //handle Disabled
     const handleDisable = (rowId) => {
         const updatedRows = rows.map((row) =>
@@ -68,7 +60,7 @@ export const Calculator = () => {
                 <button onClick={addRow} className="add-row-button">
                     Add a row
                 </button>
-                <ul>
+                <ul className="parent-container">
                     {rows.map((row, index) => (
                         <li key={row.id}>
                             <select onChange={(e) => handleSelect(e, row.id)}>

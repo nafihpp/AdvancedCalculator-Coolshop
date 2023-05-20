@@ -45,9 +45,6 @@ export const Calculator = () => {
     };
     //calculating total value whenever rows change
     useEffect(() => {
-        if (rows.length > 0) {
-            inputRef.current.focus();
-        }
         let newTotal = rows.reduce((accumulator, row) => {
             if (!row.disabled) {
                 accumulator +=
@@ -59,6 +56,10 @@ export const Calculator = () => {
         }, 0);
         setTotal(newTotal);
     }, [rows]);
+
+    useEffect(() => {
+        console.log(inputRef.current);
+    }, [addRow]);
 
     return (
         <Fragment>
@@ -77,7 +78,6 @@ export const Calculator = () => {
                                 type="number"
                                 placeholder="enter the value"
                                 onChange={(e) => handleValue(e, row.id)}
-                                ref={inputRef}
                                 disabled={row.disabled ? true : false}
                             />
                             <button

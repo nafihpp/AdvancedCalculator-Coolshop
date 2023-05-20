@@ -1,9 +1,12 @@
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import "./Calculator.css";
 
 export const Calculator = () => {
     const [rows, setRows] = useState([]);
     const [total, setTotal] = useState(0);
+    const inputRef = useRef();
+
+    console.log(inputRef.current, "==ref");
 
     //Adding rows
     const addRow = () => {
@@ -42,6 +45,9 @@ export const Calculator = () => {
     };
     //calculating total value whenever rows change
     useEffect(() => {
+        if (rows.length > 0) {
+            inputRef.current.focus();
+        }
         let newTotal = rows.reduce((accumulator, row) => {
             if (!row.disabled) {
                 accumulator +=
@@ -71,6 +77,7 @@ export const Calculator = () => {
                                 type="number"
                                 placeholder="enter the value"
                                 onChange={(e) => handleValue(e, row.id)}
+                                ref={inputRef}
                                 disabled={row.disabled ? true : false}
                             />
                             <button

@@ -1,7 +1,5 @@
 import { Fragment, useEffect, useState } from "react";
 import "./Calculator.css";
-import { Modal } from "../components/Modal";
-import { DeleteModal } from "../components/DeleteModal";
 
 export const Calculator = () => {
     const [rows, setRows] = useState([]);
@@ -84,7 +82,7 @@ export const Calculator = () => {
                                 disabled={row.disabled ? true : false}
                             />
                             <button
-                                onClick={() => handleModal(row.id)}
+                                onClick={() => handleDelete(row.id)}
                                 className="delete-button"
                             >
                                 Delete
@@ -105,14 +103,6 @@ export const Calculator = () => {
                 </ul>
                 {rows.length > 0 && <h2>Total:{total}</h2>}
             </div>
-            {deleteModal && (
-                <Modal handleModal={handleModal}>
-                    <DeleteModal
-                        handleModal={handleModal}
-                        handleDelete={() => handleDelete(selectedDelete)}
-                    />
-                </Modal>
-            )}
         </Fragment>
     );
 };

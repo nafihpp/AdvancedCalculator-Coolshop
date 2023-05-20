@@ -4,7 +4,7 @@ import "./Calculator.css";
 export const Calculator = () => {
     const [rows, setRows] = useState([]);
     const [total, setTotal] = useState(0);
-    const inputRef = useRef({});
+    const inputRef = useRef();
 
     //Adding rows
     const addRow = () => {
